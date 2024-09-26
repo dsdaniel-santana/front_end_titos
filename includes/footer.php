@@ -1,3 +1,3 @@
-<div class="footer">
-    <p>All rights reserve &copy; <? date ('Y')?></p>
+<div class="text-center mt-3">
+    <p>All rights reserved. &copy; <?= date('Y') ?></p>
 </div>

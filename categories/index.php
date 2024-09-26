@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/mdb.min.css">
-    <title>Titos Burguers - Products</title>
     
-
+    
+    <title>Titos Burguers - Categories</title>
+    
 </head>
 <body>
     <header>
@@ -17,10 +18,10 @@
         <div class="card">
         <div class="card-header">
             <div class="d-flex justify-content-between align-itens-center"></div>
-            <h6>Products List</h6>
+            <h6>Categories List</h6>
 
             <button class="btn btn-success">
-                New Product
+                New Categories
             </button>
         </div>
 
@@ -29,14 +30,12 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
                         <th>Category</th>
                         <th>Status</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
-                <tbody id="list-products"></tbody>
+                <tbody id="list-categories"></tbody>
             </table>
         </div>
         </div>
@@ -47,39 +46,38 @@
         <?php include_once("../includes/footer.php")?>
     </footer>
     <script>
-        fetch('http://localhost/api_titosburger/products/listAll.php')
+        fetch('http://localhost/api_titosburger/categories/listAll.php')
             .then(response => response.json())
             .then((response) => {
                 let auxTable = "";
  
-                response.map(product => {
+                response.categories.map(category => {
                     auxTable += `<tr>
-                                    <td>${product.id_product}</td>
-                                    <td>${product.product_name}</td>
-                                    <td>${product.price}</td>
-                                    <td>${product.id_category}</td>
-                                    <td>${product.id_status}</td>
+                                    <td>${category.id_category}</td>
+                                    <td>${category.category_name}</td>
+                                    <td>${category.image}</td>
+                                    <td>${category.id_status}</td>
                                     <td>
-                                        <button onclick= "edit(${product.id_product})" class="btn btn-sm btn-primary">Edit</button>
-                                        <button onclick= "pDelete(${product.id_product})" class="btn btn-sm btn-danger">Delete</button>
+                                        <button onclick= "edit(${category.id_category})" class="btn btn-sm btn-primary">Edit</button>
+                                        <button onclick= "pDelete(${category.id_category})" class="btn btn-sm btn-danger">Delete</button>
                                     </td>
                                    
                                 </tr>
                                 `;
  
-                    console.log(product);
+                    console.log(category);
                 })
  
-                document.getElementById("list-products").innerHTML = auxTable;
+                document.getElementById("list-categories").innerHTML = auxTable;
  
             })
 
-            function edit(id_product){
+            function edit(id_category){
 
             }
 
-            function pDelete(id_product){
-                fetch('http://localhost/api_titosburger/products/delete.php?id=' +id_product, {
+            function pDelete(id_category){
+                fetch('http://localhost/api_titosburger/categories/delete.php?id=' +id_category, {
                     method: 'DELETE'
                 })
                 .then(response => response.json())

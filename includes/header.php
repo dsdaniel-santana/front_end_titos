@@ -1,5 +1,5 @@
-<nav class="navbar">
-    <h1>Titos Burger</h1>
-    
-    <?php include_once("menu.php")?>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary mb-3">
+  <div class="container-fluid">
+      <?php include_once("menu.php"); ?>
+  </div>
 </nav>
